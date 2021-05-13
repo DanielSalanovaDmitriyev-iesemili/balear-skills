@@ -18,6 +18,15 @@ class CreateModalitiesTable extends Migration
             $table->string('title');
             $table->timestamps();
         });
+
+        Schema::create('modality_space', function (Blueprint $table) {
+            $table->unsignedBigInteger('space_id');
+            $table->unsignedBigInteger('modality_id');
+            $table->timestamps();
+
+            $table->foreign('space_id')->references('id')->on('spaces');
+            $table->foreign('modality_id')->references('id')->on('modalities');
+        });
     }
 
     /**

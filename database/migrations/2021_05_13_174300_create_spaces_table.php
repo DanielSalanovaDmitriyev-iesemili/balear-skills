@@ -34,9 +34,9 @@ class CreateSpacesTable extends Migration
         Schema::create('space_user', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('space_id');
-            $table->string('comment');
-            $table->integer('valoration');
-            $table->boolean('is_published');
+            $table->string('comment')->nullable();
+            $table->integer('valoration')->nullable();
+            $table->boolean('is_published')->nullable();
             $table->date('published_at');
 
             $table->foreign('user_id')->references('id')->on('users');

@@ -15,12 +15,15 @@ class CreateArtTable extends Migration
     {
         Schema::create('art', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('exposition_id');
             $table->string('title');
             $table->date('create_at');
             $table->enum('format', ['pintura', 'escultura', 'fotografia']);
             $table->string('author');
             $table->string('img');
             $table->timestamps();
+
+            $table->foreign('exposition_id')->references('id')->on('expositions');
         });
     }
 

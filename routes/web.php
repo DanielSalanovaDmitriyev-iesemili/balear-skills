@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Art;
+use App\Models\Space;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +35,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
    
 });
 Route::get('/', function () {
-    return view('details');
+   return view('table');
 });

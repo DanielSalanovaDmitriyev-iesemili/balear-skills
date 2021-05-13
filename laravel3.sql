@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Temps de generació: 13-05-2021 a les 20:37:11
+-- Temps de generació: 13-05-2021 a les 23:07:00
 -- Versió del servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versió de PHP: 7.4.3
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `art` (
   `id` bigint UNSIGNED NOT NULL,
+  `exposition_id` bigint UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_at` date NOT NULL,
   `format` enum('pintura','escultura','fotografia') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -38,13 +39,6 @@ CREATE TABLE `art` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Bolcament de dades per a la taula `art`
---
-
-INSERT INTO `art` (`id`, `title`, `create_at`, `format`, `author`, `img`, `created_at`, `updated_at`) VALUES
-(1, 'test', '2021-05-13', 'escultura', 'test1', 'img1', '2021-05-13 18:35:36', '2021-05-13 18:35:36');
 
 -- --------------------------------------------------------
 
@@ -58,13 +52,6 @@ CREATE TABLE `cities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Bolcament de dades per a la taula `cities`
---
-
-INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'palma', '2021-05-13 18:36:22', '2021-05-13 18:36:22');
 
 -- --------------------------------------------------------
 
@@ -88,6 +75,7 @@ CREATE TABLE `expositions` (
   `id` bigint UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `space_id` bigint UNSIGNED NOT NULL,
   `ini` date NOT NULL,
   `fin` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -156,6 +144,19 @@ CREATE TABLE `modalities` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de la taula `modality_space`
+--
+
+CREATE TABLE `modality_space` (
+  `space_id` bigint UNSIGNED NOT NULL,
+  `modality_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de la taula `password_resets`
 --
 
@@ -187,6 +188,19 @@ CREATE TABLE `rols` (
 CREATE TABLE `services` (
   `id` bigint UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `service_space`
+--
+
+CREATE TABLE `service_space` (
+  `space_id` bigint UNSIGNED NOT NULL,
+  `service_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -236,9 +250,9 @@ CREATE TABLE `space_types` (
 CREATE TABLE `space_user` (
   `user_id` bigint UNSIGNED NOT NULL,
   `space_id` bigint UNSIGNED NOT NULL,
-  `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `valoration` int NOT NULL,
-  `is_published` tinyint(1) NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `valoration` int DEFAULT NULL,
+  `is_published` tinyint(1) DEFAULT NULL,
   `published_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -267,16 +281,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `dni`, `number`, `email`, `rol_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Eladio Hoeger', '1', NULL, 'robel.elvie@example.net', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'tj2IXEm4EH', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(2, 'Ms. Ines Gislason I', '1', NULL, 'bennett.jacobson@example.net', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'TKGjioP0xa', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(3, 'Rosamond Mohr', '1', NULL, 'odonnelly@example.com', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'iLgHFcuAbv', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(4, 'Dr. Nickolas Kirlin PhD', '1', NULL, 'tquigley@example.net', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'F5XHrLyMqc', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(5, 'Annie Grady', '1', NULL, 'slindgren@example.com', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '9vJ5XluwR0', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(6, 'Green Monahan', '1', NULL, 'benjamin.cassin@example.org', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '8drzWlMjug', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(7, 'Miss Rosina Lowe', '1', NULL, 'watsica.armand@example.com', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2G3WLdJjUd', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(8, 'Malika Schowalter', '1', NULL, 'george.reynolds@example.org', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ZfJKXmk01D', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(9, 'Dr. Garfield Effertz I', '1', NULL, 'kaley.dietrich@example.org', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'dMv55aUpIF', '2021-05-13 16:31:44', '2021-05-13 16:31:44'),
-(10, 'Eloy Rolfson', '1', NULL, 'einar.langosh@example.org', NULL, '2021-05-13 16:31:44', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'OvhltBbAYb', '2021-05-13 16:31:44', '2021-05-13 16:31:44');
+(1, 'Prof. Arlene Purdy', '1', NULL, 'janice.hermann@example.net', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'IuZV596Vge', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(2, 'Olaf Jacobi', '1', NULL, 'emelia.turcotte@example.org', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'oKaIHg534C', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(3, 'Maymie Dickens', '1', NULL, 'horacio.bergstrom@example.com', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '9VFbx3rPXZ', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(4, 'Julia Blick', '1', NULL, 'haylie.hickle@example.com', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'f81ajDVyn0', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(5, 'Dr. Liana Schmitt', '1', NULL, 'gail.olson@example.net', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'sAz23pWLEj', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(6, 'Dr. Fredy McKenzie DVM', '1', NULL, 'magali.mccullough@example.net', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'dCZ7ig5E3I', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(7, 'Christy Yost', '1', NULL, 'eleanore27@example.org', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'zK6AWjWi1s', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(8, 'Carlie Hagenes', '1', NULL, 'clara93@example.net', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'FHjsFTEXVE', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(9, 'Rahsaan Kunze', '1', NULL, 'mohr.noel@example.com', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'cQMie4yepr', '2021-05-13 19:06:43', '2021-05-13 19:06:43'),
+(10, 'Mervin Keeling', '1', NULL, 'camille58@example.net', NULL, '2021-05-13 19:06:43', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '4PSXgQIWGG', '2021-05-13 19:06:43', '2021-05-13 19:06:43');
 
 --
 -- Índexs per a les taules bolcades
@@ -286,7 +300,8 @@ INSERT INTO `users` (`id`, `name`, `dni`, `number`, `email`, `rol_id`, `email_ve
 -- Índexs per a la taula `art`
 --
 ALTER TABLE `art`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `art_exposition_id_foreign` (`exposition_id`);
 
 --
 -- Índexs per a la taula `cities`
@@ -304,7 +319,8 @@ ALTER TABLE `comments`
 -- Índexs per a la taula `expositions`
 --
 ALTER TABLE `expositions`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `expositions_space_id_foreign` (`space_id`);
 
 --
 -- Índexs per a la taula `failed_jobs`
@@ -326,6 +342,13 @@ ALTER TABLE `modalities`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índexs per a la taula `modality_space`
+--
+ALTER TABLE `modality_space`
+  ADD KEY `modality_space_space_id_foreign` (`space_id`),
+  ADD KEY `modality_space_modality_id_foreign` (`modality_id`);
+
+--
 -- Índexs per a la taula `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -342,6 +365,13 @@ ALTER TABLE `rols`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índexs per a la taula `service_space`
+--
+ALTER TABLE `service_space`
+  ADD KEY `service_space_space_id_foreign` (`space_id`),
+  ADD KEY `service_space_service_id_foreign` (`service_id`);
 
 --
 -- Índexs per a la taula `spaces`
@@ -380,13 +410,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT per la taula `art`
 --
 ALTER TABLE `art`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la taula `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la taula `comments`
@@ -451,6 +481,32 @@ ALTER TABLE `users`
 --
 -- Restriccions per a les taules bolcades
 --
+
+--
+-- Restriccions per a la taula `art`
+--
+ALTER TABLE `art`
+  ADD CONSTRAINT `art_exposition_id_foreign` FOREIGN KEY (`exposition_id`) REFERENCES `expositions` (`id`);
+
+--
+-- Restriccions per a la taula `expositions`
+--
+ALTER TABLE `expositions`
+  ADD CONSTRAINT `expositions_space_id_foreign` FOREIGN KEY (`space_id`) REFERENCES `spaces` (`id`);
+
+--
+-- Restriccions per a la taula `modality_space`
+--
+ALTER TABLE `modality_space`
+  ADD CONSTRAINT `modality_space_modality_id_foreign` FOREIGN KEY (`modality_id`) REFERENCES `modalities` (`id`),
+  ADD CONSTRAINT `modality_space_space_id_foreign` FOREIGN KEY (`space_id`) REFERENCES `spaces` (`id`);
+
+--
+-- Restriccions per a la taula `service_space`
+--
+ALTER TABLE `service_space`
+  ADD CONSTRAINT `service_space_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`),
+  ADD CONSTRAINT `service_space_space_id_foreign` FOREIGN KEY (`space_id`) REFERENCES `spaces` (`id`);
 
 --
 -- Restriccions per a la taula `spaces`

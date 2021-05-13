@@ -18,6 +18,15 @@ class CreateServicesTable extends Migration
             $table->string('title');
             $table->timestamps();
         });
+
+        Schema::create('service_space', function (Blueprint $table) {
+            $table->unsignedBigInteger('space_id');
+            $table->unsignedBigInteger('service_id');
+            $table->timestamps();
+
+            $table->foreign('space_id')->references('id')->on('spaces');
+            $table->foreign('service_id')->references('id')->on('services');
+        });
     }
 
     /**

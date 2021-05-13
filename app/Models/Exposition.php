@@ -9,7 +9,7 @@ class Exposition extends Model
 {
     use HasFactory;
 
-    public function space () {
+    public function space() {
         return $this->belongsTo(Space::class);
     }
 
