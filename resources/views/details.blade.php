@@ -10,7 +10,7 @@
 <body>
     @include('layouts.header')
         <main>
-            <h1 class='text-5xl font-bold my-6 text-center' >Detalles de un articulo</h1>
+            <h1 class='text-5xl font-bold my-6 text-center' >Detalles de un Espacio</h1>
             <div class='grid grid-cols-1 items-start'>
             <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6'>
             <div class='flex flex-col md:flex-row -mx-4'>
@@ -30,14 +30,13 @@
             </div>
             </div>
             <div class='md:flex-1 px-4'>
-            <h2 class='mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl'>Titulo</h2>
-            <p class='text-gray-500 text-sm'>By <a href='#' class='text-indigo-600 hover:underline'>Blog Company</a></p>
-            <p class='text-gray-500 my-2  '>Descripción de articulos</p>
+            <h2 class='mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl'>{{$space->title}}</h2>
+            <p class='text-gray-500 my-2  '>{{$space->description}}</p>
             <div class='border-t-2 border-gray-300 my-3'>
             <label>Fecha: 12/12/2021</label>
             </div>
             <div class='border-t-2 border-gray-300 my-3'>
-                <label>Valoracion: 4</label>
+                <label>Valoracion: {{$space->valoration}}</label>
                 </div>
             </div>
             </div>
@@ -45,75 +44,27 @@
             <div class="row ml-96">
                 <h1>Exposiciones</h1>
                 <div class="grid grid-cols-6">
-                <div class="col-span-1">
-                    <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                        <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                        <div class='px-6 py-4'>
-                        <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                        <p class='text-grey-darker text-base'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                        </div>
-                        <div class='px-6 py-4'>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-span-1">
-                    <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                        <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                        <div class='px-6 py-4'>
-                        <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                        <p class='text-grey-darker text-base'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                        </div>
-                        <div class='px-6 py-4'>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-span-1">
-                    <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                        <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                        <div class='px-6 py-4'>
-                        <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                        <p class='text-grey-darker text-base'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                        </div>
-                        <div class='px-6 py-4'>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-span-1">
-                    <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                        <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                        <div class='px-6 py-4'>
-                        <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                        <p class='text-grey-darker text-base'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                        </div>
-                        <div class='px-6 py-4'>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                        <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                        </div>
-                        </div>
-                </div>
-            </div>
+                    @foreach ($space->expositions as $exposition)
+                    <div class="col-span-1">
+                        <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
+                            <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
+                            <div class='px-6 py-4'>
+                            <div class='font-bold text-xl mb-2'>{{$exposition->title}}</div>
+                            <p class='text-grey-darker text-base'>
+                                {{$exposition->description}}
+                            </p>
+                            </div>
+                            </div>
+                    </div>
+                    @endforeach
+               
+               
+                
+                 </div>
             </div>
             <div class="ml-96">
                 <div class="flex">
-                    <form action="">
+                    <form action="{{route('coment')}}" method="POST">
                         <h1>Comenta!</h1>
                         <textarea name="" id="" cols="30" rows="5" required  minlength="3" maxlength="150"></textarea>
                         <button class="bg-blue-600 rounded-lg p-2" type="submit">Comentar</button>

@@ -20,44 +20,7 @@
 <body>
     @include('layouts.header')
         <main>
-            <div>
-                <div class='flex flex-col items-center m-8'>
-                    <div class='w-full bg-white rounded overflow-x-hidden flex snap-x' style='height: 40vh'>
-                        <div class='snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative' id='slide-1'>
-                            <img src='{{asset('img/espacio1.png')}}' class='h-full w-full object-cover absolute inset-0 z-10 opacity-25'>
-                            <h1 class='z-20 text-center'>Any kind of content here, images too!</h1>
-                        </div>
-                    <div class='snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative' id='slide-2'>
-                        <img src='{{asset('img/espacio2.png')}}' class='h-full w-full object-cover absolute inset-0 z-10 opacity-25'>
-                        <h1 class='z-20 text-center'>Any kind of content here, images too!</h1>
-                    </div>
-                    <div class='snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative' id='slide-3'>
-                        <img src='{{asset('img/espacio3.png')}}' class='h-full w-full object-cover absolute inset-0 z-10 opacity-25'>
-                        <h1 class='z-20 text-center'>Any kind of content here, images too!</h1>
-                    </div>
-                    <div class='snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative' id='slide-4'>
-                        <img src='{{asset('img/espacio4.png')}}' class='h-full w-full object-cover absolute inset-0 z-10 opacity-25'>
-                        <h1 class='z-20 text-center'>Any kind of content here, images too!</h1>
-                    </div>
-                    <div class='snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative' id='slide-5'>
-                        <img src='{{asset('img/espacio5.png')}}' class='h-full w-full object-cover absolute inset-0 z-10 opacity-25'>
-                        <h1 class='z-20 text-center'>Any kind of content here, images too!</h1>
-                    </div>
-                    <div class='snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative' id='slide-6'>
-                        <img src='{{asset('img/espacio1.png')}}' class='h-full w-full object-cover absolute inset-0 z-10 opacity-25'>
-                        <h1 class='z-20 text-center'>Any kind of content here, images too!</h1>
-                    </div>
-                    </div>
-                    <div class='flex mt-8'>
-                    <a class='w-8 mr-1 h-8 text-gray-700 rounded-full bg-white flex justify-center items-center' href='#slide-1'>1</a>
-                    <a class='w-8 mr-1 h-8 text-gray-700 rounded-full bg-white flex justify-center items-center' href='#slide-2'>2</a>
-                    <a class='w-8 mr-1 h-8 text-gray-700 rounded-full bg-white flex justify-center items-center' href='#slide-3'>3</a>
-                    <a class='w-8 mr-1 h-8 text-gray-700 rounded-full bg-white flex justify-center items-center' href='#slide-4'>4</a>
-                    <a class='w-8 h-8 text-gray-700 rounded-full bg-white flex justify-center items-center' href='#slide-5'>5</a>
-                    <a class='w-8 h-8 text-gray-700 rounded-full bg-white flex justify-center items-center' href='#slide-6'>6</a>
-                    </div>
-                    </div>
-            </div>
+            @include('layouts.carrousel')
             <div class="grid grid-cols-4">
                 <div class="col-span-1">
                     <form class='grid grid-cols-2 border-b-2 border-opacity-20 border-gray-300 col-span-3'>
@@ -150,70 +113,7 @@
                 </div>
                 <div class="col-span-3">
                     <div class="grid grid-cols-6">
-                        <div class="col-span-2">
-                            <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                                <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                                <div class='px-6 py-4'>
-                                <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                                <p class='text-grey-darker text-base'>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                                </div>
-                                <div class='px-6 py-4'>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="col-span-2">
-                            <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                                <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                                <div class='px-6 py-4'>
-                                <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                                <p class='text-grey-darker text-base'>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                                </div>
-                                <div class='px-6 py-4'>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="col-span-2">
-                            <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                                <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                                <div class='px-6 py-4'>
-                                <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                                <p class='text-grey-darker text-base'>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                                </div>
-                                <div class='px-6 py-4'>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="col-span-2">
-                            <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
-                                <img class='w-full' src='https://tailwindcss.com/img/card-top.jpg' alt='Sunset in the mountains'>
-                                <div class='px-6 py-4'>
-                                <div class='font-bold text-xl mb-2'>The Coldest Sunset</div>
-                                <p class='text-grey-darker text-base'>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                </p>
-                                </div>
-                                <div class='px-6 py-4'>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#photography</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2'>#travel</span>
-                                <span class='inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker'>#winter</span>
-                                </div>
-                                </div>
-                        </div>
+                        @yield('content')
                     </div>
                 </div>
             </div>
