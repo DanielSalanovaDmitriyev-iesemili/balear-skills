@@ -40,4 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function spaces () {
+        return $this->belongsToMany(Space::class);
+    }
+
+    public function rol () {
+        return $this->belongsTo(Rol::class);
+    }
+    
 }

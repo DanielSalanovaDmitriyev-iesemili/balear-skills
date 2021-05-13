@@ -29,5 +29,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     })->middleware(['auth'])->name('dashboard');
 	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     
-
+   
+});
+Route::get('/', function () {
+    return view('details');
 });
