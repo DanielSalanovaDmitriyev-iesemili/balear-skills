@@ -17,9 +17,13 @@ class SpaceController extends Controller
     public function show(Space $space) {
         return view('details', compact('space'));
     }
-
+    public function search (Request $request) {
+        $spaces = Space::where('name', 'LIKE', '%' . $request->search . '%');
+        
+    }
     public function comment (Request $request, Space $space) {
         $id = $space->id;
+        return $request;
         $space->user()->attach(['user_id' => Auth::user()->id, 'space_id' => $id, 'comment' => $request->comment]);
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\SpaceController;
+use App\Http\Controllers\SpaceTypeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Art;
 use App\Models\Space;
+use App\Models\SpaceType;
 use App\Models\User;
 
 /*
@@ -40,4 +42,12 @@ Route::get('/', [SpaceController::class, 'index'])->name('index.space');
 
 
 Route::get('/space/{id}', [SpaceController::class, 'show'])->name('show.space');
+Route::get('/search', [SpaceController::class, 'search'])->name('search');
 Route::post('/comment', [SpaceController::class, 'comment'])->name('comment');
+
+Route::get('/type/index', [SpaceTypeController::class, 'index'])->name('index.type');
+Route::get('/type/create', [SpaceTypeController::class, 'create'])->name('create.type');
+Route::post('/type/store', [SpaceTypeController::class, 'store'])->name('store.type');
+Route::get('/type/edit/{id}', [SpaceTypeController::class, 'edit'])->name('edit.type');
+Route::get('/type/{id}', [SpaceTypeController::class, 'update'])->name('update.type');
+Route::get('/type/{id}', [SpaceTypeController::class, 'delete'])->name('delete.type');

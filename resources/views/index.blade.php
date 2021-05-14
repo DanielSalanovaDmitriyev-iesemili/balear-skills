@@ -23,10 +23,13 @@
             @include('layouts.carrousel')
             <div class="grid grid-cols-4">
                 <div class="col-span-1">
+                    <form action="{{route('search')}}" method="GET">
+                        <input type="text" name="search">
+                        <button type="submit">Buscar</button>
+                    </form>
+                
                     <form class='grid grid-cols-2 border-b-2 border-opacity-20 border-gray-300 col-span-3'>
-                        <label class='text-sm font-semibold uppercase m-2'>
-                        <input class='rounded ml-2' type='search' name='search' id='' placeholder='Search'>
-                        </label>
+        
                         <div class='px-10 py-2'>
                         <button type='submit'><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 hover:text-blue-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' />

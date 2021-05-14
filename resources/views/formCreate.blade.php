@@ -9,53 +9,7 @@
 </head>
 <body>  
     @include('layouts.header')
-    <main>
-        
-            <div class='w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12'>
-                <h2 class='mb-16 uppercase underline font-bold grid justify-items-center'>Create or Update</h2>
-                <form class='min-w-min'>
-                    <div class='grid grid-flow-col auto-cols-max'>
-                        <div class='relative'>
-                            <label class='absolute bottom-12 font-semibold'>Name</label>
-                            <input class='shadow-md border-2 border-gray-300 bg-gray-200 py-2 rounded-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent' type='text'>
-                        </div>
-                        <div class='relative ml-20'>
-                            <label class='absolute bottom-12 font-semibold'>Options</label>
-                            <select name="" id="">
-                                <option value="">Op1</option>
-                                <option value="">Op2</option>
-                                <option value="">Op3</option>
-                            </select>
-                        </div>
-                        
-                    </div>
-                    <div class='mt-16 relative'>
-                        <label for='email2' class='absolute bottom-10 font-semibold'>Email</label>
-                        <input class='w-full shadow-md border-2 border-gray-300 bg-gray-200 py-1 rounded-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent'  type='email' id='email2' name='email2'>
-                    </div>
-                    <div class='mt-16 relative'>
-                        <textarea class='w-full shadow-md border-2 border-gray-300 bg-gray-200 py-1 rounded-sm h-45 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent' ></textarea>
-                    </div>
-                </div>
-                <div class="flex ml-12">
-                    <label >Options</label>
-                    
-                    <div class='relative ml-20'>
-                        <div class="absolute"></div>
-                        <select name="" id="" multiple>
-                            <option value="">Op1</option>
-                            <option value="">Op2</option>
-                            <option value="">Op3</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class='mt-16 relative'>
-                    <button class='p-4 rounded-lg bg-green-400 hover:bg-green-200'>Send</button>
-                </div>
-                </form>
-                </div>
-    </main>
+    @yield('content')
     @include('layouts.footer')
 </body>
 </html>

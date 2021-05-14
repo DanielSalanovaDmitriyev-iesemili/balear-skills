@@ -64,7 +64,7 @@
             </div>
             <div class="ml-96">
                 <div class="flex">
-                    <form action="{{route('coment')}}" method="POST">
+                    <form action="{{route('comment')}}" method="POST">
                         <h1>Comenta!</h1>
                         <textarea name="" id="" cols="30" rows="5" required  minlength="3" maxlength="150"></textarea>
                         <button class="bg-blue-600 rounded-lg p-2" type="submit">Comentar</button>
