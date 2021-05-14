@@ -18,12 +18,14 @@ class SpaceController extends Controller
         return view('details', compact('space'));
     }
     public function search (Request $request) {
-        $spaces = Space::where('name', 'LIKE', '%' . $request->search . '%');
+        $spaces = Space::where('name', 'LIKE', '%' . $request->search . '%')->paginate(2);
+        $destacados = Space::where('destacado',1)->get();
+        return view('layouts.content', compact('spaces', 'destacados'));
         
     }
     public function comment (Request $request, Space $space) {
         $id = $space->id;
-        return $request;
-        $space->user()->attach(['user_id' => Auth::user()->id, 'space_id' => $id, 'comment' => $request->comment]);
+        $space->user()->attach(Auth::user()->id, ['comment' => $request->comment]);
+        return  redirect()->route('show.space', $id);
     }
 }

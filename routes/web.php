@@ -41,9 +41,9 @@ require __DIR__.'/auth.php';
 Route::get('/', [SpaceController::class, 'index'])->name('index.space');
 
 
-Route::get('/space/{id}', [SpaceController::class, 'show'])->name('show.space');
+Route::get('/space/{space}', [SpaceController::class, 'show'])->name('show.space');
 Route::get('/search', [SpaceController::class, 'search'])->name('search');
-Route::post('/comment', [SpaceController::class, 'comment'])->name('comment');
+Route::post('/comment/{space}', [SpaceController::class, 'comment'])->name('comment');
 
 Route::get('/type/index', [SpaceTypeController::class, 'index'])->name('index.type');
 Route::get('/type/create', [SpaceTypeController::class, 'create'])->name('create.type');

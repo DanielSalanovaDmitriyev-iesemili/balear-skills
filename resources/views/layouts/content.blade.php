@@ -5,7 +5,7 @@
         <div class='max-w-xs rounded overflow-hidden shadow-lg my-2'>
             <img class='w-full' src='{{asset('img/' . $space->img . $space->id . '.png')}}' alt='Sunset in the mountains'>
             <div class='px-6 py-4'>
-            <div class='font-bold text-xl mb-2'>{{$space->title}}</div>
+            <div class='font-bold text-xl mb-2'><a href="{{route('show.space', $space->id)}}">{{$space->name}}</a></div>
             <p class='text-grey-darker text-base'>
                 {{$space->description}}
             </div>

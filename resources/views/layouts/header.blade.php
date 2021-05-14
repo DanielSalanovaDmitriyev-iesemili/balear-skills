@@ -25,18 +25,27 @@
     <li>
     <a class='block px-4 py-1 md:p-2 lg:px-4 text-blue-600 galdeano'  href='#' title='Active Link'>Contact</a>
     </li>
+    @if (Auth::check())
     <li>
-    <a class='block px-4 py-1 md:p-2 lg:px-4 galdeano' href='#' title='Link'>Admin</a>
-    </li>
+        <a class='block px-4 py-1 md:p-2 lg:px-4 galdeano' href='#' title='Link'>Admin</a>
+        </li>
+    @endif
+    
     </ul>
     <ul class='flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0 galdeano'>
-    <li>
-    <a class='block px-4 py-1 md:p-2 lg:px-4 galdeano'  href='#' title='Link'>User</a>
-    </li>
-    <li>
-    <a class='block px-4 py-1 md:p-2 lg:px-4 text-blue-600 galdeano' href='#' title='Active Link'>Logout</a>
-    </li>
+        @if (Route::has('login'))
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            @auth
+                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
     </ul>
     </div>
     </div>
